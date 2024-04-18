@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz sur les ressources en eau</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f3ff; /* Couleur bleue claire en rapport avec l'eau */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            padding-top: 35px;
+            text-align: center;
+            color: #0099cc; /* Bleu d'eau pour l'en-tête */
+            margin-top: 90px;
+        }
+        
+        button {
+            background-color: #0099cc; /* Bleu d'eau pour les boutons */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #007399; /* Variation de couleur au survol */
+        }
+        
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .options li {
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #c9f5ff; /* Bleu clair pour les options */
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .options li:hover {
+            background-color: #a5d8e6; /* Variation de couleur au survol des options */
+        }
+        
+        .feedback {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #0099cc; /* Couleur du texte pour le feedback */
+        }
+        
+         /* Ajoutez vos propres styles pour personnaliser davantage l'apparence */
+  /* Par exemple : des images, des icônes, des animations, etc. */
+  /* Styles pour le conteneur principal du quiz */
+#quiz-container {
+    max-width: 600px; /* Largeur maximale du conteneur */
+    margin: 50px auto; /* Centrer le conteneur au milieu de la page */
+    padding: 20px;
+    border-radius: 15px; /* Coins arrondis */
+    background-color: #ffffff; /* Fond de la boîte */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre pour un effet de profondeur */
+  }
+  
+  /* Style pour le bouton de validation */
+  #okBtn {
+    display: block;
+    width: 30%; /* Définit la largeur du bouton à 100% */
+    margin-top: 20px; /* Espacement supplémentaire vers le haut */
+    margin-left: auto; /* Centre les boutons horizontalement */
+    margin-right: auto; /* Centre les boutons horizontalement */
+  }
+  
+  #nextBtn {
+    display: block;
+    width: 30%; /* Définit la largeur du bouton à 100% */
+    margin-top: 20px; /* Espacement supplémentaire vers le haut */
+    margin-left: auto; /* Centre les boutons horizontalement */
+    margin-right: auto; /* Centre les boutons horizontalement */
+  }
+
+        /* Autres styles spécifiques au contenu de votre quiz vont ici */
+        
+
+        /* Ajoutez vos propres styles pour personnaliser davantage l'apparence */
+        /* Par exemple : des images, des icônes, des animations, etc. */
+    </style>
+</head>
+
+<body>
+    <header data-bs-theme="dark">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="quizzRessourceEau.html"><img src="/images/AirImpact.png" alt="Air'Impact Logo" width="60" height="60">
+                </a> 
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="allQuizz.html">Quizz</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <h1>Quiz sur les resssources en eau</h1>
+
+    <div id="quiz-container">
+        <!-- Questions et options vont ici -->
+    </div>
+
+    <button id="okBtn" onclick="checkAnswer()">Valider</button>
+    <button id="nextBtn" onclick="nextQuestion()" style="display: none;">Suivant</button>
+
+    <div id="feedback" class="feedback"></div>
+
+    <script>
+        const questions = [
+            {
+                question: "Quelle est l'une des causes de la réduction des ressources en eau liée au changement climatique?",
+                options: [" Diminution de la population", " Fonte des glaciers", " Expansion urbaine", " Utilisation excessive de l'eau"],
+                correctAnswer: 1
+            },
+            {
+                question: "Quel rôle essentiel les arbres jouent-ils dans la régulation du cycle de l'eau?",
+                options: [" Augmentation des températures", " Diminution des précipitations", " Déforestation", " Expansion urbaine"],
+                correctAnswer: 2
+            },
+            {
+                question: "Quel facteur contribue à une demande croissante en eau pour la consommation, l'agriculture et l'industrie?",
+                options: [" Croissance démographique", " Urbanisation", " Déforestation", " Pénurie d'eau"],
+                correctAnswer: 0
+            },
+            {
+                question: "En quoi l'urbanisation peut-elle affecter les ressources en eau locales?",
+                options: [" Augmentation des températures", " Modification des schémas d'utilisation des terres", " Fonte des glaciers", " Diminution des précipitations"],
+                correctAnswer: 1
+            },
+            {
+                question: "Quel est l'impact d'une diminution des ressources en eau sur la biodiversité?",
+                options: [" Pénurie d'eau", " Impact sur la santé humaine", " Perturbation des écosystèmes aquatiques", " Augmentation des ressources en eau"],
+                correctAnswer: 2
+            },
+            {
+                question: "Quel secteur est fortement affecté par une diminution des ressources en eau?",
+                options: [" Santé humaine", " Agriculture", " Conservation de l'eau", " Protection des écosystèmes"],
+                correctAnswer: 1
+            },
+            {
+                question: "Quels sont les problèmes de santé humaine associés à la pénurie d'eau et à la contamination de l'eau?",
+                options: [" Impact sur la biodiversité", " Pénurie d'eau", " Maladies d'origine hydrique", " Agriculture"],
+                correctAnswer: 2
+            },
+            {
+                question: "Pourquoi l'agriculture dépend-elle fortement de l'eau?",
+                options: [" Déforestation", " Pénurie d'eau", " Fonte des glaciers", " Irrigation efficace"],
+                correctAnswer: 3
+            },
+            {
+                question: "Qu'est-ce que la gestion intégrée des ressources en eau vise à accomplir?",
+                options: [" Diminution de la population", " Conservation de l'eau", " Protection des écosystèmes", " Approche holistique pour la gestion durable de l'eau"],
+                correctAnswer: 3
+            },
+            {
+                question: "Quelle pratique de conservation de l'eau est mentionnée, impliquant la réutilisation des eaux usées?",
+                options: [" Protection des écosystèmes", " Conservation de l'eau", " Technologies innovantes", " Pénurie d'eau"],
+                correctAnswer: 1
+            },
+            {
+                question: "Quel rôle jouent les écosystèmes aquatiques dans la régulation des ressources en eau?",
+                options: [" Irrigation efficace", " Technologies innovantes", " Protection des écosystèmes", " Déforestation"],
+                correctAnswer: 2
+            },
+            {
+                question: "Dans quel domaine les technologies novatrices telles que la désalinisation peuvent-elles être utilisées?",
+                options: [" Conservation de l'eau", " Protection des écosystèmes", " Gestion intégrée des ressources en eau", " Technologies innovantes"],
+                correctAnswer: 3
+            }
+        ];
+
+
+        let currentQuestion = 0;
+        let userAnswers = [];
+
+        function generateQuestion() {
+            const quizContainer = document.getElementById('quiz-container');
+            const okBtn = document.getElementById('okBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const feedback = document.getElementById('feedback');
+
+            const questionDiv = document.createElement('div');
+            questionDiv.classList.add('question');
+
+            const questionText = document.createElement('p');
+            questionText.innerHTML = `<strong>${currentQuestion + 1}. ${questions[currentQuestion].question}</strong>`;
+            questionDiv.appendChild(questionText);
+
+            const optionsList = document.createElement('ul');
+            optionsList.classList.add('options');
+
+            questions[currentQuestion].options.forEach((option, optionIndex) => {
+                const optionLi = document.createElement('li');
+                optionLi.classList.add('option');
+
+                const optionInput = document.createElement('input');
+                optionInput.type = 'radio';
+                optionInput.name = `question${currentQuestion}`;
+                optionInput.value = optionIndex;
+                optionInput.required = true;
+
+                const optionLabel = document.createElement('label');
+                optionLabel.innerHTML = option;
+
+                optionLi.appendChild(optionInput);
+                optionLi.appendChild(optionLabel);
+                optionsList.appendChild(optionLi);
+            });
+
+            questionDiv.appendChild(optionsList);
+            quizContainer.innerHTML = '';
+            quizContainer.appendChild(questionDiv);
+
+            okBtn.style.display = 'block'; // Afficher le bouton OK
+            nextBtn.style.display = 'none'; // Cacher le bouton Suivant
+            feedback.innerHTML = ''; // Effacer le feedback
+        }
+
+        function checkAnswer() {
+            const selectedOption = document.querySelector(`input[name="question${currentQuestion}"]:checked`);
+
+            if (selectedOption) {
+                const answer = parseInt(selectedOption.value);
+                userAnswers.push(answer);
+
+                const correctAnswer = questions[currentQuestion].correctAnswer;
+
+                const feedback = document.getElementById('feedback');
+                if (answer === correctAnswer) {
+                    feedback.innerHTML = "Réponse correcte! 😊";
+                } else {
+                    feedback.innerHTML = `Réponse fausse 😢. La bonne réponse était : ${questions[currentQuestion].options[correctAnswer]}`;
+                }
+
+                feedback.style.display = 'block';
+
+                document.getElementById('nextBtn').style.display = 'block'; // Afficher le bouton Suivant après avoir répondu
+                document.getElementById('okBtn').style.display = 'none'; // Cacher le bouton OK
+
+                if (currentQuestion === questions.length - 1) {
+                    // Si c'est la dernière question, afficher le message de fin de quiz après le feedback
+                    setTimeout(() => {
+                        document.getElementById('quiz-container').innerHTML = '<p>Quiz terminé. Merci!</p>';
+                        document.getElementById('nextBtn').style.display = 'none';
+                        feedback.style.display = 'none'; // Cacher le feedback
+                    }, 1000); // Vous pouvez ajuster le délai en millisecondes selon vos préférences
+                }
+            }
+        }
+
+
+
+
+        function nextQuestion() {
+            currentQuestion++;
+
+            if (currentQuestion < questions.length) {
+                generateQuestion();
+            } else {
+                // Le quiz est terminé, vous pouvez traiter les réponses de l'utilisateur ici
+                console.log(userAnswers);
+                document.getElementById('quiz-container').innerHTML = '<p>Quiz terminé. Merci!</p>';
+                document.getElementById('okBtn').style.display = 'none';
+                document.getElementById('nextBtn').style.display = 'none';
+            }
+        }
+
+        window.onload = generateQuestion;
+    </script>
+</body>
+
+</html>

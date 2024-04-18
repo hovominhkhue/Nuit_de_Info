@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz sur l'Énergie</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Styles généraux pour le corps de la page */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eaf5e1;
+      /* Vert clair - couleur en rapport avec l'écologie */
+      color: #333;
+      /* Couleur du texte principale */
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Style pour l'en-tête */
+    h1 {
+      padding-top: 35px;
+      text-align: center;
+      color: #4CAF50;
+      /* Vert plus foncé pour l'en-tête */
+      margin-top: 80px;
+    }
+
+    /* Style pour les boutons */
+    button {
+      background-color: #4CAF50;
+      /* Vert pour les boutons */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      /* Transition fluide pour l'interaction */
+    }
+
+    button:hover {
+      background-color: #45a049;
+      /* Changement de couleur au survol */
+    }
+
+    /* Style pour les options de réponse */
+    .options {
+      list-style: none;
+      padding: 0;
+    }
+
+    .options li {
+      margin-bottom: 10px;
+    }
+
+    /* Style pour le feedback */
+    .feedback {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    #quiz-container {
+      max-width: 600px; /* Largeur maximale du conteneur */
+      margin: 50px auto; /* Centrer le conteneur au milieu de la page */
+      padding: 20px;
+      border-radius: 15px; /* Coins arrondis */
+      background-color: #ffffff; /* Fond de la boîte */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre pour un effet de profondeur */
+    }
+    
+    /* Style pour le bouton de validation */
+    #okBtn {
+      display: block;
+      width: 30%; /* Définit la largeur du bouton à 100% */
+      margin-top: 20px; /* Espacement supplémentaire vers le haut */
+      margin-left: auto; /* Centre les boutons horizontalement */
+      margin-right: auto; /* Centre les boutons horizontalement */
+    }
+    
+    #nextBtn {
+      display: block;
+      width: 30%; /* Définit la largeur du bouton à 100% */
+      margin-top: 20px; /* Espacement supplémentaire vers le haut */
+      margin-left: auto; /* Centre les boutons horizontalement */
+      margin-right: auto; /* Centre les boutons horizontalement */
+    }
+
+    /* Ajoutez vos propres styles pour personnaliser davantage l'apparence */
+    /* Par exemple : des images, des icônes, des animations, etc. */
+  </style>
+</head>
+
+<body>
+  <header data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="quizzEnergie.html"> <img src="/images/AirImpact.png" alt="Air'Impact Logo"
+            width="60" height="60"> </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="allQuizz.html">Quizz</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <h1>Quiz sur l'Énergie</h1>
+
+  <div id="quiz-container">
+    <!-- Questions et options vont ici -->
+  </div>
+
+  <button id="okBtn" onclick="checkAnswer()">Valider</button>
+  <button id="nextBtn" onclick="nextQuestion()" style="display: none;">Suivant</button>
+
+  <div id="feedback" class="feedback"></div>
+
+  <script>
+    const questions = [
+      {
+        question: "Quelle est la principale source d'énergie renouvelable en utilisant la chaleur interne de la Terre ?",
+        options: ["Énergie solaire", "Énergie hydraulique", "Énergie géothermique", "Énergie éolienne"],
+        correctAnswer: 2
+      },
+      {
+        question: "Quel gaz est le principal responsable de l'effet de serre d'origine anthropique ?",
+        options: ["Oxygène", "Dioxyde de carbone", "Azote", "Méthane"],
+        correctAnswer: 1
+      },
+      {
+        question: "Quelle technologie permet de convertir directement la lumière du soleil en électricité ?",
+        options: ["Énergie hydraulique", "Énergie solaire photovoltaïque", "Énergie éolienne", "Énergie géothermique"],
+        correctAnswer: 1
+      },
+      {
+        question: "Quelle est la plus grande source d'émission de gaz à effet de serre d'origine humaine ?",
+        options: ["Industrie", "Transport", "Agriculture", "Résidentiel"],
+        correctAnswer: 1
+      },
+      {
+        question: "Quel est le principal avantage des voitures électriques par rapport aux voitures à essence en termes d'émissions de gaz à effet de serre ?",
+        options: ["Elles n'émettent aucun gaz à effet de serre", "Elles émettent moins de dioxyde de carbone", "Elles émettent plus de gaz à effet de serre", "Elles utilisent moins d'énergie"],
+        correctAnswer: 0
+      },
+      {
+        question: "Quelle est la principale source d'énergie pour la propulsion des avions ?",
+        options: ["Énergie solaire", "Pétrole", "Énergie éolienne", "Énergie nucléaire"],
+        correctAnswer: 1
+      },
+      {
+        question: "Quel est le principal inconvénient de l'énergie éolienne ?",
+        options: ["Elle produit beaucoup de pollution", "Elle dépend des conditions météorologiques", "Elle est coûteuse à installer", "Elle occupe beaucoup d'espace"],
+        correctAnswer: 1
+      },
+      {
+        question: "Quel pays est le plus grand producteur d'énergie solaire au monde ?",
+        options: ["Chine", "États-Unis", "Allemagne", "Inde"],
+        correctAnswer: 0
+      },
+      {
+        question: "Quelle est la principale source d'énergie utilisée pour produire de l'électricité dans les barrages hydroélectriques ?",
+        options: ["Vent", "Eau en mouvement", "Soleil", "Géothermie"],
+        correctAnswer: 1
+      },
+      {
+        question: "Quelle technologie de stockage de l'énergie est souvent utilisée pour stocker l'électricité produite par les éoliennes et les panneaux solaires ?",
+        options: ["Batteries", "Ressorts mécaniques", "Réservoirs d'eau", "Systèmes de compression d'air"],
+        correctAnswer: 0
+      }
+    ];
+
+    let currentQuestion = 0;
+    let userAnswers = [];
+
+    function generateQuestion() {
+      const quizContainer = document.getElementById('quiz-container');
+      const okBtn = document.getElementById('okBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const feedback = document.getElementById('feedback');
+
+      const questionDiv = document.createElement('div');
+      questionDiv.classList.add('question');
+
+      const questionText = document.createElement('p');
+      questionText.innerHTML = `<strong>${currentQuestion + 1}. ${questions[currentQuestion].question}</strong>`;
+      questionDiv.appendChild(questionText);
+
+      const optionsList = document.createElement('ul');
+      optionsList.classList.add('options');
+
+      questions[currentQuestion].options.forEach((option, optionIndex) => {
+        const optionLi = document.createElement('li');
+        optionLi.classList.add('option');
+
+        const optionInput = document.createElement('input');
+        optionInput.type = 'radio';
+        optionInput.name = `question${currentQuestion}`;
+        optionInput.value = optionIndex;
+        optionInput.required = true;
+
+        const optionLabel = document.createElement('label');
+        optionLabel.innerHTML = option;
+
+        optionLi.appendChild(optionInput);
+        optionLi.appendChild(optionLabel);
+        optionsList.appendChild(optionLi);
+      });
+
+      questionDiv.appendChild(optionsList);
+      quizContainer.innerHTML = '';
+      quizContainer.appendChild(questionDiv);
+
+      okBtn.style.display = 'block'; // Afficher le bouton OK
+      nextBtn.style.display = 'none'; // Cacher le bouton Suivant
+      feedback.innerHTML = ''; // Effacer le feedback
+    }
+
+    function checkAnswer() {
+      const selectedOption = document.querySelector(`input[name="question${currentQuestion}"]:checked`);
+
+      if (selectedOption) {
+        const answer = parseInt(selectedOption.value);
+        userAnswers.push(answer);
+
+        const correctAnswer = questions[currentQuestion].correctAnswer;
+
+        const feedback = document.getElementById('feedback');
+        if (answer === correctAnswer) {
+          feedback.innerHTML = "Réponse correcte! 😊";
+        } else {
+          feedback.innerHTML = `Réponse fausse 😢. La bonne réponse était : ${questions[currentQuestion].options[correctAnswer]}`;
+        }
+
+        feedback.style.display = 'block';
+
+        document.getElementById('nextBtn').style.display = 'block'; // Afficher le bouton Suivant après avoir répondu
+        document.getElementById('okBtn').style.display = 'none'; // Cacher le bouton OK
+
+        if (currentQuestion === questions.length - 1) {
+          // Si c'est la dernière question, afficher le message de fin de quiz après le feedback
+          setTimeout(() => {
+            document.getElementById('quiz-container').innerHTML = '<p>Quiz terminé. Merci!</p>';
+            document.getElementById('nextBtn').style.display = 'none';
+            feedback.style.display = 'none'; // Cacher le feedback
+          }, 1000); // Vous pouvez ajuster le délai en millisecondes selon vos préférences
+        }
+      }
+    }
+
+
+
+
+    function nextQuestion() {
+      currentQuestion++;
+
+      if (currentQuestion < questions.length) {
+        generateQuestion();
+      } else {
+        // Le quiz est terminé, vous pouvez traiter les réponses de l'utilisateur ici
+        console.log(userAnswers);
+        document.getElementById('quiz-container').innerHTML = '<p>Quiz terminé. Merci!</p>';
+        document.getElementById('okBtn').style.display = 'none';
+        document.getElementById('nextBtn').style.display = 'none';
+      }
+    }
+
+    window.onload = generateQuestion;
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzs</title>
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/images/dessin-theme-fond-ecran-automne_23-2148614155.png'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            }
+        h1{
+            padding-top: 100px;
+            text-align: center;
+            font-weight: bold;
+        }
+        #questions {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+        }
+        #questions h3 a {
+            display: block;
+            padding: 10px;
+            margin: 10px;
+            text-decoration: none;
+            color: #000;
+            background-color: #75cc5f;
+            border: 5px double #000000;
+            border-radius: 10px;
+            background-clip: padding-box;
+        }
+    </style>
+</head>
+<body>
+    <header data-bs-theme="dark">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html"> <img src="/images/AirImpact.png" alt="Air'Impact Logo" width="60" height="60"> </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="allQuizz.html">Quizz</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <h1>Apprenez avec nos quizzs !</h1>
+    <div id="questions">
+        <h3><a href="quizzEnergie.html">Quizz sur l'énergie</a></h3>
+        <h3><a href="quizzConsommation.html">Quizz sur la consommation</a></h3>
+        <h3><a href="quizzRessourceEau.html">Quizz sur les ressources en eau</a></h3>
+    </div>
+</body>
+</html>
